@@ -1,0 +1,212 @@
+:root {
+    --bg-color: #2c3e50;
+    --calc-bg: #34495e;
+    --display-bg: #2c3e50;
+    --display-text: #ecf0f1;
+    --btn-bg: #3b5166;
+    --btn-text: #ecf0f1;
+    --operator-bg: #e67e22;
+    --operator-text: #ffffff;
+    --equals-bg: #2ecc71;
+    --equals-text: #ffffff;
+    --clear-bg: #c0392b;
+    --clear-text: #ffffff;
+    --shadow-light: rgba(255, 255, 255, 0.05);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    --history-bg: #34495e;
+    --history-item-bg: #2c3e50;
+    --history-text: #bdc3c7;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--display-text);
+    padding-top: 20px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.calculator {
+    background-color: var(--calc-bg);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 
+        -5px -5px 15px var(--shadow-light),
+        5px 5px 15px var(--shadow-dark);
+    width: 320px;
+}
+
+.display {
+    width: 100%;
+    height: 70px;
+    background-color: var(--display-bg);
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    text-align: right;
+    color: var(--display-text);
+    box-shadow: inset 3px 3px 7px var(--shadow-dark),
+                inset -3px -3px 7px var(--shadow-light);
+    outline: none;
+}
+
+.display::placeholder {
+    color: rgba(236, 240, 241, 0.5);
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.btn {
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 10px;
+    font-size: 1.5em;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 
+        -3px -3px 7px var(--shadow-light),
+        3px 3px 7px var(--shadow-dark);
+    font-weight: 400;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        -4px -4px 10px var(--shadow-light),
+        4px 4px 10px var(--shadow-dark);
+}
+
+.btn:active {
+    transform: translateY(1px);
+    box-shadow: 
+        inset -2px -2px 5px var(--shadow-light),
+        inset 2px 2px 5px var(--shadow-dark);
+}
+
+.btn.operator {
+    background-color: var(--operator-bg);
+    color: var(--operator-text);
+}
+
+.btn.equals {
+    background-color: var(--equals-bg);
+    color: var(--equals-text);
+}
+
+.btn.clear {
+    background-color: var(--clear-bg);
+    color: var(--clear-text);
+}
+
+.span-2 {
+    grid-column: span 2;
+}
+
+.history-panel {
+    background-color: var(--history-bg);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 
+        -5px -5px 15px var(--shadow-light),
+        5px 5px 15px var(--shadow-dark);
+    width: 320px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.history-panel h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    color: var(--display-text);
+    text-align: center;
+    border-bottom: 1px solid rgba(236, 240, 241, 0.1);
+    padding-bottom: 10px;
+}
+
+#history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+#history-list li {
+    background-color: var(--history-item-bg);
+    color: var(--history-text);
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    box-shadow: inset 2px 2px 4px var(--shadow-dark),
+                inset -2px -2px 4px var(--shadow-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    word-break: break-all;
+}
+
+#history-list li .history-expression {
+    color: #bdc3c7;
+    margin-right: 10px;
+}
+
+#history-list li .history-result {
+    color: var(--display-text);
+    font-weight: 500;
+}
+
+.clear-history {
+    background-color: var(--clear-bg);
+    color: var(--clear-text);
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 15px;
+    align-self: center;
+    width: 60%;
+}
+
+.clear-history:hover {
+    background-color: #e74c3c;
+}
+
+.history-panel::-webkit-scrollbar {
+    width: 8px;
+}
+.history-panel::-webkit-scrollbar-track {
+    background: var(--calc-bg);
+    border-radius: 10px;
+}
+.history-panel::-webkit-scrollbar-thumb {
+    background: var(--btn-bg);
+    border-radius: 10px;
+}
+.history-panel::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
